@@ -1,0 +1,229 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --page-bg: #0c0719;
+  --page-panel: rgba(255, 255, 255, 0.06);
+  --page-border: rgba(148, 163, 184, 0.18);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% 14%, rgba(123, 92, 255, 0.2), transparent 22%),
+    radial-gradient(circle at 18% 78%, rgba(133, 56, 255, 0.1), transparent 24%),
+    radial-gradient(circle at 82% 84%, rgba(91, 33, 182, 0.12), transparent 26%),
+    linear-gradient(180deg, #0b0616 0%, #0d0820 46%, #070411 100%);
+  color: #e5eef8;
+  font-family:
+    Aptos,
+    "Segoe UI",
+    "Helvetica Neue",
+    Arial,
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  text-rendering: optimizeLegibility;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.025)),
+    radial-gradient(circle at center, transparent 55%, rgba(0, 0, 0, 0.28) 100%);
+  mix-blend-mode: soft-light;
+  opacity: 0.55;
+  z-index: -1;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(123, 92, 255, 0.12), transparent 32%),
+    radial-gradient(circle at 20% 82%, rgba(168, 85, 247, 0.08), transparent 24%),
+    radial-gradient(circle at 80% 76%, rgba(91, 33, 182, 0.08), transparent 28%);
+  opacity: 0.42;
+  z-index: -1;
+}
+
+* {
+  border-color: rgba(148, 163, 184, 0.18);
+}
+
+::selection {
+  background: rgba(76, 201, 240, 0.28);
+  color: white;
+}
+
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+
+  section {
+    position: relative;
+  }
+}
+
+@layer utilities {
+  @keyframes float-slow {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+    50% {
+      transform: translate3d(0, -10px, 0);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.06);
+    }
+  }
+
+  @keyframes drift-soft {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    33% {
+      transform: translate3d(18px, -12px, 0) scale(1.04);
+    }
+    66% {
+      transform: translate3d(-16px, 14px, 0) scale(0.98);
+    }
+  }
+
+  @keyframes marquee-diagonal {
+    0% {
+      transform: translate3d(-8%, 0, 0);
+    }
+    100% {
+      transform: translate3d(8%, -6%, 0);
+    }
+  }
+
+  @keyframes wave-drift {
+    0%,
+    100% {
+      transform: translate3d(0, 0, 0) rotate(0deg);
+    }
+    50% {
+      transform: translate3d(22px, -14px, 0) rotate(2deg);
+    }
+  }
+
+  @keyframes fixed-orbit {
+    0% {
+      transform: rotate(0deg) scale(1);
+    }
+    50% {
+      transform: rotate(180deg) scale(1.04);
+    }
+    100% {
+      transform: rotate(360deg) scale(1);
+    }
+  }
+
+  @keyframes fixed-breathe {
+    0%,
+    100% {
+      opacity: 0.32;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      opacity: 0.62;
+      transform: translate(-50%, -50%) scale(1.08);
+    }
+  }
+
+  .animate-float-slow {
+    animation: float-slow 7s ease-in-out infinite;
+  }
+
+  .animate-float-delay {
+    animation: float-slow 9s ease-in-out infinite;
+    animation-delay: 0.6s;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 4.2s ease-in-out infinite;
+  }
+
+  .animate-drift-soft {
+    animation: drift-soft 16s ease-in-out infinite;
+  }
+
+  .animate-drift-soft-delay {
+    animation: drift-soft 20s ease-in-out infinite;
+    animation-delay: 1.2s;
+  }
+
+  .animate-marquee-diagonal {
+    animation: marquee-diagonal 22s linear infinite alternate;
+  }
+
+  .animate-wave-drift {
+    animation: wave-drift 18s ease-in-out infinite;
+  }
+
+  .animate-fixed-orbit {
+    animation: fixed-orbit 28s linear infinite;
+  }
+
+  .animate-fixed-breathe {
+    animation: fixed-breathe 7s ease-in-out infinite;
+  }
+
+  .bg-radial-lines {
+    background-image: repeating-radial-gradient(
+      circle at center,
+      rgba(167, 139, 250, 0.28) 0,
+      rgba(167, 139, 250, 0.28) 1px,
+      transparent 1px,
+      transparent 10px
+    );
+  }
+
+  .bg-arc-lines {
+    background-image: repeating-radial-gradient(
+      ellipse at top left,
+      rgba(139, 92, 246, 0.2) 0,
+      rgba(139, 92, 246, 0.2) 1px,
+      transparent 1px,
+      transparent 12px
+    );
+  }
+}
