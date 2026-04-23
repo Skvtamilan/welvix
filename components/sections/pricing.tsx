@@ -16,50 +16,47 @@ const pricingPlans = [
   {
     name: "Starter",
     price: "₹9,999",
-    description: "For getting your business online",
+    description: "Basic landing pages",
     features: [
       "3-5 pages",
       "Responsive design",
-      "Basic SEO",
+      "Basic SEO setup",
       "Contact form",
-      "Built with modern website technologies",
       "1-2 revisions"
     ],
     highlighted: false,
-    cta: "Get Started"
+    cta: "Get started"
   },
   {
     name: "Growth",
     price: "₹24,999",
-    description: "For businesses that want consistent leads",
+    description: "Full websites with SEO",
     features: [
       "Everything in Starter",
       "5-10 pages",
       "Custom design",
-      "Built with Next.js",
-      "Latest modern tech stack",
+      "Advanced SEO + blog setup",
+      "Basic backend",
       "Lead capture + WhatsApp",
-      "Animations + speed optimization",
       "3-4 revisions"
     ],
     highlighted: true,
-    cta: "Start Growing"
+    cta: "Start growing"
   },
   {
     name: "Premium",
     price: "₹49,999+",
-    description: "For serious brands that need a tailored digital build",
+    description: "E-commerce & complex apps",
     features: [
       "Everything in Growth",
-      "Custom architecture",
-      "Backend + database",
+      "Product catalog + cart",
       "Payment integration",
-      "Latest modern tech stack",
+      "Backend + database",
       "Automation features",
       "Priority support"
     ],
     highlighted: false,
-    cta: "Start Your Project"
+    cta: "Start your project"
   }
 ];
 
@@ -69,8 +66,8 @@ export function PricingSection() {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Pricing"
-          title="Flexible packages for brands at different stages, without making the offer feel vague."
-          description="These packages give visitors a clear sense of investment and value while still leaving space for custom scope where needed."
+          title="Clear packages for different stages of your website journey."
+          description="Choose the right package based on how much structure, functionality, and growth support your business needs."
           align="center"
         />
 
@@ -87,7 +84,7 @@ export function PricingSection() {
               variants={fadeUpItem}
               whileHover={{ y: -10, scale: 1.01 }}
               className={cn(
-                "relative overflow-hidden rounded-[2.2rem] border p-8 transition-all duration-300 hover:-translate-y-1.5",
+                "relative flex min-h-[620px] flex-col overflow-hidden rounded-[2.2rem] border p-8 transition-all duration-300 hover:-translate-y-1.5",
                 plan.highlighted
                   ? "border-primary/40 bg-[linear-gradient(180deg,rgba(76,201,240,0.18),rgba(255,255,255,0.08))] shadow-[0_24px_80px_rgba(14,165,233,0.18)]"
                   : "border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.04))] shadow-[0_20px_70px_rgba(2,6,23,0.22)]"
@@ -99,6 +96,7 @@ export function PricingSection() {
                   Most Popular
                 </div>
               ) : null}
+
               <h3 className="text-2xl font-semibold text-white">{plan.name}</h3>
               <p className="mt-4 text-4xl font-semibold tracking-tight text-white">
                 {plan.price}
@@ -106,7 +104,10 @@ export function PricingSection() {
               <p className="mt-4 text-sm leading-7 text-slate-300">
                 {plan.description}
               </p>
-              <div className="relative mt-8 space-y-4">
+
+              <div className="my-6 h-px bg-white/10" />
+
+              <div className="relative space-y-4">
                 {plan.features.map((feature) => (
                   <motion.div
                     key={feature}
@@ -116,20 +117,22 @@ export function PricingSection() {
                     <div className="mt-0.5 rounded-full bg-accent/15 p-1 text-accent">
                       <Check className="h-3.5 w-3.5" />
                     </div>
-                    <p className="text-sm text-slate-200">{feature}</p>
+                    <p className="text-sm leading-7 text-slate-200">{feature}</p>
                   </motion.div>
                 ))}
               </div>
+
               <Button
                 href="#contact"
                 variant={plan.highlighted ? "primary" : "secondary"}
-                className="mt-8 w-full"
+                className="mt-auto w-full"
               >
                 {plan.cta}
               </Button>
             </motion.article>
           ))}
         </motion.div>
+
         <p className="mt-8 text-center text-sm font-medium text-slate-300">
           Most clients choose Growth for the best balance of cost and results.
         </p>

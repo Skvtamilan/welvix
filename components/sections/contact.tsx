@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { FormEvent } from "react";
 import { Mail, MessageCircle, PhoneCall } from "lucide-react";
@@ -15,7 +15,7 @@ const projectTypes = [
   "Ongoing Support"
 ];
 
-const budgetRanges = ["₹9,999", "₹24,999", "₹59,999+", "Not sure yet"];
+const budgetRanges = ["â‚¹9,999", "â‚¹24,999", "â‚¹59,999+", "Not sure yet"];
 
 export function ContactSection() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion, useReducedMotion } from "framer-motion";
 
@@ -42,12 +42,12 @@ export const staggerContainer = {
 };
 
 export const fadeUpItem = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, x: -56 },
   show: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: {
-      duration: 0.6,
+      duration: 0.65,
       ease: [0.22, 1, 0.36, 1]
     }
   }

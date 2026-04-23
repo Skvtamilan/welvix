@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -20,10 +20,32 @@ const navigation = [
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [isIntroVisible, setIsIntroVisible] = useState(true);
+
+  useEffect(() => {
+    const timer = window.setTimeout(() => {
+      setIsIntroVisible(false);
+    }, 1800);
+
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const isNavVisible = isIntroVisible || isHovered || isOpen;
 
   return (
-    <header className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/60 px-4 py-3 shadow-[0_16px_40px_rgba(2,6,23,0.28)] backdrop-blur-2xl">
+    <header
+      className="sticky top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className={cn(
+          "mx-auto flex max-w-7xl items-center justify-between rounded-full border border-white/10 bg-slate-950/60 px-4 py-3 shadow-[0_16px_40px_rgba(2,6,23,0.28)] backdrop-blur-2xl transition-all duration-300",
+          "translate-y-0 opacity-100 lg:pointer-events-none lg:-translate-y-5 lg:opacity-0",
+          isNavVisible && "lg:pointer-events-auto lg:translate-y-0 lg:opacity-100"
+        )}
+      >
         <Link href="#home" className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-[linear-gradient(135deg,rgba(76,201,240,1),rgba(155,225,93,0.86))] text-sm font-bold text-slate-950 shadow-[0_10px_26px_rgba(76,201,240,0.26)]">
             W
@@ -72,9 +94,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
-            className={cn(
-              "mx-auto mt-3 max-w-7xl rounded-3xl border border-white/10 bg-slate-950/95 p-5 shadow-glow backdrop-blur-xl lg:hidden"
-            )}
+            className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/10 bg-slate-950/95 p-5 shadow-glow backdrop-blur-xl lg:hidden"
           >
             <nav className="flex flex-col gap-4">
               {navigation.map((item) => (

@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 
 import { contactPlaceholders } from "@/data/site-config";
 
@@ -63,7 +63,7 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-4 py-6 text-sm text-slate-500 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
-          <p>© 2026 Welvix. All rights reserved.</p>
+          <p>Â© 2026 Welvix. All rights reserved.</p>
           <p>Built to help serious brands turn attention into leads.</p>
         </div>
       </div>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { motion } from "framer-motion";
 import { Gauge, LockKeyhole, MonitorSmartphone, Search, Sparkles, Target } from "lucide-react";

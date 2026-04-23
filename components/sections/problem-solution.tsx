@@ -1,7 +1,32 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { AlertCircle, ArrowRight, BadgeCheck, CircleDashed } from "lucide-react";
 
 import { AnimatedSection } from "@/components/ui/animated-section";
 import { SectionHeading } from "@/components/ui/section-heading";
+
+const slideContainer = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const slideLeftToRight = {
+  hidden: { opacity: 0, x: -56 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1]
+    }
+  }
+};
 
 const problems = [
   "Outdated design makes your business look less credible than it really is.",
@@ -25,49 +50,72 @@ export function ProblemSolutionSection() {
           description="When your website looks unclear, outdated, or forgettable, you lose attention before the conversation even starts. Welvix fixes that gap with strategy, design, and development working together."
         />
 
-        <div className="mt-14 grid gap-6 lg:grid-cols-[1fr_auto_1fr]">
-          <div className="rounded-[2rem] border border-rose-400/15 bg-rose-400/5 p-8">
+        <motion.div
+          className="mt-14 grid gap-6 lg:grid-cols-[1fr_auto_1fr]"
+          variants={slideContainer}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <motion.div
+            variants={slideLeftToRight}
+            className="rounded-[2rem] border border-rose-400/15 bg-rose-400/5 p-8"
+          >
             <div className="mb-6 inline-flex rounded-2xl bg-rose-400/10 p-3 text-rose-300">
               <AlertCircle className="h-6 w-6" />
             </div>
             <h3 className="text-2xl font-semibold text-white">Common Problems</h3>
-            <div className="mt-6 space-y-4">
+            <motion.div className="mt-6 space-y-4" variants={slideContainer}>
               {problems.map((problem) => (
-                <div
+                <motion.div
                   key={problem}
+                  variants={slideLeftToRight}
                   className="rounded-2xl border border-white/8 bg-white/5 p-5 text-sm leading-7 text-slate-300"
                 >
                   {problem}
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="hidden items-center justify-center lg:flex">
+          <motion.div
+            variants={slideLeftToRight}
+            className="hidden items-center justify-center lg:flex"
+          >
             <div className="rounded-full border border-white/10 bg-white/5 p-5 text-primary">
               <ArrowRight className="h-7 w-7" />
             </div>
-          </div>
+          </motion.div>
 
-          <div className="rounded-[2rem] border border-primary/20 bg-primary/5 p-8">
+          <motion.div
+            variants={slideLeftToRight}
+            className="rounded-[2rem] border border-primary/20 bg-primary/5 p-8"
+          >
             <div className="mb-6 inline-flex rounded-2xl bg-primary/10 p-3 text-primary">
               <BadgeCheck className="h-6 w-6" />
             </div>
             <h3 className="text-2xl font-semibold text-white">The Welvix Approach</h3>
-            <div className="mt-6 space-y-4">
+            <motion.div className="mt-6 space-y-4" variants={slideContainer}>
               {solutions.map((solution) => (
-                <div
+                <motion.div
                   key={solution}
+                  variants={slideLeftToRight}
                   className="rounded-2xl border border-white/8 bg-white/5 p-5 text-sm leading-7 text-slate-300"
                 >
                   {solution}
-                </div>
+                </motion.div>
               ))}
-            </div>
-          </div>
-        </div>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-        <div className="mt-6 rounded-[2rem] border border-white/10 bg-white/5 p-6">
+        <motion.div
+          className="mt-6 rounded-[2rem] border border-white/10 bg-white/5 p-6"
+          initial={{ opacity: 0, x: -48 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.25 }}
+          transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+        >
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-start gap-3">
               <CircleDashed className="mt-1 h-5 w-5 text-accent" />
@@ -81,7 +129,7 @@ export function ProblemSolutionSection() {
               Designed to convert, not just impress
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </AnimatedSection>
   );
