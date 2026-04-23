@@ -15,7 +15,7 @@ const projectTypes = [
   "Ongoing Support"
 ];
 
-const budgetRanges = ["â‚¹9,999", "â‚¹24,999", "â‚¹59,999+", "Not sure yet"];
+const budgetRanges = ["₹9,999", "₹24,999", "₹49,999+", "Not sure yet"];
 
 export function ContactSection() {
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
